@@ -7,10 +7,7 @@ interface RetroService {
 
     //https://gorest.co.in/public/v2/users
     @GET("users")
-    @Headers(
-        "Accept:application/json",
-        "Content-Type:application/json"
-    )
+    @Headers("Accept:application/json", "Content-Type:application/json")
     fun getUsersList(): Call<UserList>
 
     //https://gorest.co.in/public/v2/users?name=a
