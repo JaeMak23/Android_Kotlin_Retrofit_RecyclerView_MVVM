@@ -32,10 +32,7 @@ interface RetroService {
         "Accept:application/json", "Content-Type:application/json",
         "Authorization: Bearer eb7f290f787b55e9b8847b49e13d5ed723443defa6d73514183d011a8b3a9ac2"
     )
-    fun updateUser(
-        @Path("user_id") user_id: String,
-        @Body params: User
-    ): Call<UserResponse>
+    fun updateUser(@Path("user_id") user_id: String, @Body params: User): Call<UserResponse>
 
     @DELETE("users/{user_id}")
     @Headers(
