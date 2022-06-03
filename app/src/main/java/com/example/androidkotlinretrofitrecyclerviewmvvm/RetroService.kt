@@ -3,22 +3,23 @@ package com.example.androidkotlinretrofitrecyclerviewmvvm
 import retrofit2.Call
 import retrofit2.http.*
 
+
 interface RetroService {
 
     //https://gorest.co.in/public/v2/users
     @GET("users")
     @Headers("Accept:application/json", "Content-Type:application/json")
-    fun getUsersList(): Call<UserList>
+    fun getUsersList(): Call<List<User>>
 
     //https://gorest.co.in/public/v2/users?name=a
     @GET("users")
     @Headers("Accept:application/json", "Content-Type:application/json")
-    fun searchUsers(@Query("name") searchText: String): Call<UserList>
+    fun searchUsers(@Query("name") searchText: String): Call<List<User>>
 
     //https://gorest.co.in/public/v2/users/121
     @GET("users/{user_id}")
     @Headers("Accept:application/json", "Content-Type:application/json")
-    fun getUser(@Path("user_id") user_id: String): Call<UserList>
+    fun getUser(@Path("user_id") user_id: String): Call<List<User>>
 
     @POST("users")
     @Headers(

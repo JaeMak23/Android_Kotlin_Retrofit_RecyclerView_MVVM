@@ -3,9 +3,9 @@ package com.example.androidkotlinretrofitrecyclerviewmvvm
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,8 +25,11 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        initRecycleView()
-        searchUser()
+
+       initRecycleView()
+        initViewModel()
+        //searchUser()
+
     }
 
     private fun searchUser() {
@@ -51,13 +54,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun initViewModel() {
+   private fun initViewModel() {
+        Log.d("LOG","initializing View_Model... ")
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        viewModel.getUserListObservable().observe(this, Observer<UserList> {
+        viewModel.getUserListObservable().observe(this, Observer<List<User>> {
             if (it == null) {
+                Log.d("LOG","initializing View_Model > UserList is null")
                 Toast.makeText(this@MainActivity, "no result found...", Toast.LENGTH_LONG).show()
             } else {
-                recycleViewAdapter.userList = it.data.toMutableList()
+                Log.d("LOG","initializing View_Model > UserList is not null")
+                //recycleViewAdapter.userList = it.data.toMutableList()
+                recycleViewAdapter.userList = it.toMutableList()
                 recycleViewAdapter.notifyDataSetChanged()
             }
         })

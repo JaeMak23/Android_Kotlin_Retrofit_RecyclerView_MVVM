@@ -7,14 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstance {
 
-
-
     companion object {
-
-        private const val baseUrl="https://gorest.co.in/public/v2/users"
+        private const val baseUrl="https://gorest.co.in/public/v2/"
 
         fun getRetrofitInstance():Retrofit{
-
             val logging = HttpLoggingInterceptor()
             logging.level=(HttpLoggingInterceptor.Level.BODY)
             val client =OkHttpClient.Builder()
@@ -25,7 +21,6 @@ class RetrofitInstance {
                 .client(client.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
         }
     }
 }
