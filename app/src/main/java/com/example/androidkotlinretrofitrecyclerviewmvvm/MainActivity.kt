@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidkotlinretrofitrecyclerviewmvvm.databinding.ActivityMainBinding
 
-lateinit var recyclerView: RecyclerView
-private lateinit var binding: ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
+    lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivityMainBinding
     lateinit var recycleViewAdapter: RecyclerViewAdapter
     lateinit var viewModel: MainActivityViewModel
 
