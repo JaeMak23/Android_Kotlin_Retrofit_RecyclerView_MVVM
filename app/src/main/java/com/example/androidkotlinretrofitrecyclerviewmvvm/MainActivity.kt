@@ -28,14 +28,14 @@ class MainActivity : AppCompatActivity() {
 
        initRecycleView()
         initViewModel()
-        //searchUser()
+        searchUser()
 
     }
 
     private fun searchUser() {
         binding.searchButton.setOnClickListener {
-            if (TextUtils.isEmpty(binding.searchButton.text.toString())) {
-                viewModel.searchUser(binding.searchButton.text.toString())
+            if (!TextUtils.isEmpty(binding.searchEditText.text.toString())) {
+                viewModel.searchUser(binding.searchEditText.text.toString())
             } else {
                 viewModel.getUserList()
             }
